@@ -1,6 +1,6 @@
-const openai = require('openai');
-const openai=newOpenAI({
-    apikey:Process.env.OpenAI_API_KEY,
+const OpenAI = require('openai');
+const openai=new OpenAI({
+    apiKey:process.env.OpenAI_API_KEY,
 });
 
 async function generateItinerary(extractedText) {
@@ -17,4 +17,4 @@ async function generateItinerary(extractedText) {
 return completion.choices[0].message.content;
 }
 
-Module.exports={generateItinerary};
+module.exports={generateItinerary};

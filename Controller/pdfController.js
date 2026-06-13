@@ -1,3 +1,4 @@
+const { generateItinerary } = require("../service_ai/openai_service");
 const fs=require('fs');
 const pdfParse=require('pdf-parse');
 const BookingModel = require("../Model/BookingModel");
@@ -5,7 +6,7 @@ const BookingModel = require("../Model/BookingModel");
 const UploadFile=async(req,res)=>{
 try{
     const pdfBuffer=fs.readFileSync(req.file.path);
-    const pdfData=await PDFParse(pdfBuffer);
+    const pdfData=await pdfParse(pdfBuffer);
     console.log(pdfData.text);
     res.json({extractedText:pdfData.text,});
 }catch(error){
@@ -17,7 +18,7 @@ try{
 const getHistory = async (req, res) => {
   try {
     const history = await BookingModel.find({
-      userId: req.user.id,
+      UserId: req.user.id,
     });
     res.status(200).json(history);
   } catch (error) {

@@ -12,9 +12,8 @@ app.use(express.json());
 // Database Connection
 // Routes
 app.use("/api/user", userRoutes);
-app.use("/api/upload", bookingRoutes);
-app.use("/api/history", bookingRoutes);
-
+app.use("/api", bookingRoutes);
+app.use("/api", bookingRoutes);
 // Server
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);

@@ -23,7 +23,7 @@ Status:{
     enum:['processing','completed','failed'],
     default:'processing'
 },
-},{timeStamps:true});
+},{timestamps:true});
 const BookingModel=mongoose.model('Booking',BookingSchema);
 
 module.exports=BookingModel;
