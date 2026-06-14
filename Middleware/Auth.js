@@ -1,17 +1,27 @@
-const jwt=require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-const auth=(req,res,next)=>{
-const token=req.headers.authorization;
-console.log(token);
-if(token){
-    const ogtoken=auth.split(" ")[1];
-    const data = jwt.verify(ogtoken,process.env.JWT_SECRET);
-    console.log(data);
-    req.user=data;
+const auth = (req, res, next) => {
+const token = req.headers.authorization;
+  console.log(token);
+  if (!token) {
+    return res.status(401).json({
+      message: "Please login",
+    });
+  }
+
+  try {
+    const ogtoken = token.split(" ")[1];
+    const data = jwt.verify(
+      ogtoken,
+      process.env.JWT_SECRET
+    );
+    req.user = data;
     next();
-}else{
-return res.send('log in');
-}
-}
+  } catch (error) {
+    return res.status(401).json({
+      message: "Invalid token",
+    });
+  }
+};
 
-module.exports=auth;
+module.exports = auth;  
