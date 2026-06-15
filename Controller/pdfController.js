@@ -1,6 +1,7 @@
 const { generateItinerary } = require("../service_ai/openai_service");
 const fs = require("fs");
 const pdfParse = require("pdf-parse");
+console.log(pdfParse);
 const BookingModel = require("../Model/BookingModel");
 
 const UploadFile = async (req, res) => {
