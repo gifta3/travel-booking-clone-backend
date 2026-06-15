@@ -1,8 +1,9 @@
 const { generateItinerary } = require("../service_ai/openai_service");
 const fs = require("fs");
 const pdfParseModule = require("pdf-parse");
+console.log('pdf module:',pdfParseModule);
+console.log('type:', typeofpdfParseModule);
 const pdfParse = pdfParseModule.default || pdfParseModule;
-//const pdfParse = require("pdf-parse");
 console.log(pdfParse);
 const BookingModel = require("../Model/BookingModel");
 
