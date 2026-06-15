@@ -12,6 +12,9 @@ const UploadFile = async (req, res) => {
     message: "No file received",
   });
 }
+console.log("REQ FILE:", req.file);
+console.log("FILE PATH:", req.file?.path);
+console.log("FILE EXISTS:", fs.existsSync(req.file?.path));
 //console.log("PATH:", req.file.path);
     const pdfBuffer = fs.readFileSync(req.file.path);
     const pdfData = await pdfParse(pdfBuffer);

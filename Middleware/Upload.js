@@ -28,7 +28,6 @@ const fileFilter = (req, file, cb) => {
     cb("error only jpeg/jpg/png/pdf files allowed");
   }
 };
-
 const upload = multer({
   storage: storage,
   limits: {
