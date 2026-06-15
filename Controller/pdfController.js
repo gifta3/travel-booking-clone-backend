@@ -5,6 +5,7 @@ const BookingModel = require("../Model/BookingModel");
 
 const UploadFile = async (req, res) => {
   try {
+    console.log('req file:',req.file);
     const pdfBuffer = fs.readFileSync(req.file.path);
     const pdfData = await pdfParse(pdfBuffer);
     const itinerary = await generateItinerary(pdfData.text);
