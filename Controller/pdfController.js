@@ -7,11 +7,12 @@ const UploadFile = async (req, res) => {
   try {
     console.log('req file:',req.file);
     if (!req.file) {
+          console.log('req file not found');
   return res.status(400).json({
     message: "No file received",
   });
 }
-console.log("PATH:", req.file.path);
+//console.log("PATH:", req.file.path);
     const pdfBuffer = fs.readFileSync(req.file.path);
     const pdfData = await pdfParse(pdfBuffer);
     const itinerary = await generateItinerary(pdfData.text);
