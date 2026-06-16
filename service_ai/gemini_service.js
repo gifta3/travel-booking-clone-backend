@@ -1,15 +1,17 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-/*
-const generateItinerary = async (text) => {
+
+async function generateItinerary(text) {
   try {
-    console.log('gemini key', !! process.env.GEMINI_API_KEY);
+    console.log("Gemini key exists:", !!process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash-latest",
+      model: "gemini-1.5-pro",
     });
-const prompt = `
+    const prompt = `
 You are a travel assistant.
-Extract travel itinerary from this text and structure it nicely:
+Extract the travel itinerary from the following document and present it in a clear format.
+Document:
 ${text}
 `;
     const result = await model.generateContent(prompt);
@@ -19,8 +21,10 @@ ${text}
     console.error("Gemini Error:", error);
     throw error;
   }
-};
-*/
+}
+
+module.exports = { generateItinerary };
+/*
 async function generateItinerary(text) {
   try {
     console.log("Gemini key exists:", !!process.env.GEMINI_API_KEY);
@@ -31,4 +35,4 @@ async function generateItinerary(text) {
     throw error;
   }
 }
-module.exports = { generateItinerary };
+*/
