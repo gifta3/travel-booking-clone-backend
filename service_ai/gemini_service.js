@@ -3,6 +3,25 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 async function generateItinerary(text) {
   try {
+    console.log("SDK version test");
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models?key=${process.env.GEMINI_API_KEY}`
+    );
+    const data = await response.json();
+    console.log("AVAILABLE MODELS:", JSON.stringify(data, null, 2));
+    return "Model list logged";
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+module.exports = { generateItinerary };
+/*
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+async function generateItinerary(text) {
+  try {
     console.log("Gemini key exists:", !!process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({
       model: "gemini-1.5-pro",
@@ -23,7 +42,7 @@ ${text}
 }
 
 module.exports = { generateItinerary };
-/*
+.........
 async function generateItinerary(text) {
   try {
     console.log("Gemini key exists:", !!process.env.GEMINI_API_KEY);
