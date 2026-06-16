@@ -1,7 +1,7 @@
-const { generateItinerary } = require("../service_ai/openai_service");
+const { generateItinerary } = require("../service_ai/gemini_service");
 const fs = require("fs");
 const pdfParse = require("pdf-parse").default || require("pdf-parse");
-//console.log(pdfParse);
+//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
 const BookingModel = require("../Model/BookingModel");
 
 const UploadFile = async (req, res) => {
