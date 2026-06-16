@@ -1,9 +1,7 @@
 const { generateItinerary } = require("../service_ai/openai_service");
 const fs = require("fs");
-const pdfParseModule = require("pdf-parse");
-//consolelog('pdf module:',pdfParseModule);
-//consolelog('type:', typeof pdfParseModule);
-const pdfParse = pdfParseModule?.default || pdfParseModule;
+const pdfParse = require("pdf-parse");
+//const pdfParse = pdfParseModule?.default || pdfParseModule;
 //console.log(pdfParse);
 const BookingModel = require("../Model/BookingModel");
 
@@ -20,7 +18,8 @@ console.log("REQ FILE:", req.file);
 console.log("FILE PATH:", req.file?.path);
 console.log("FILE EXISTS:", fs.existsSync(req.file?.path));
     const pdfBuffer = fs.readFileSync(req.file.path);
-    const pdfData = await pdfParse(pdfBuffer);
+    console.log('type',typeof pdfParse);
+     const pdfData = await pdfParse(pdfBuffer);
     const itinerary = await generateItinerary(pdfData.text);
     const booking = await BookingModel.create({
       UserId: req.user.id,
