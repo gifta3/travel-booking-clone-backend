@@ -1,6 +1,6 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
+/*
 const generateItinerary = async (text) => {
   try {
     console.log('gemini key', !! process.env.GEMINI_API_KEY);
@@ -20,5 +20,16 @@ ${text}
     throw error;
   }
 };
+*/
+async function generateItinerary(text) {
+  try {
+    const models = await genAI.listModels();
+    console.log(models);
 
+    return "Model test complete";
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 module.exports = { generateItinerary };
