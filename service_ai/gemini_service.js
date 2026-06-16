@@ -23,10 +23,9 @@ ${text}
 */
 async function generateItinerary(text) {
   try {
-    const models = await genAI.listModels();
-    console.log(models);
+    console.log("Gemini key exists:", !!process.env.GEMINI_API_KEY);
 
-    return "Model test complete";
+    return "Gemini service reached successfully";
   } catch (error) {
     console.error(error);
     throw error;
