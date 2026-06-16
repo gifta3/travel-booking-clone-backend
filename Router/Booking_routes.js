@@ -7,6 +7,6 @@ const express= require('express');
 const router= express.Router();
 
 router.get('/history',auth,getHistory)
-router.post("/upload", upload.single("file"),UploadFile);
+router.post("/upload", auth,upload.single("file"),UploadFile);
 
 module.exports=router;

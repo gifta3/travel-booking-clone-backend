@@ -21,7 +21,7 @@ console.log("FILE EXISTS:", fs.existsSync(req.file?.path));
      const pdfData = await pdfParse(pdfBuffer);
     const itinerary = await generateItinerary(pdfData.text);
     const booking = await BookingModel.create({
-      UserId: req.user.id,
+      UserId: req.user?.id || "test-user",
       UploadedFile: req.file.filename,
       ExtractedText: pdfData.text,
       Itinerary: itinerary,
