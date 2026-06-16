@@ -1,7 +1,6 @@
 const { generateItinerary } = require("../service_ai/openai_service");
 const fs = require("fs");
 const pdfParse = require("pdf-parse");
-//const pdfParse = pdfParseModule?.default || pdfParseModule;
 //console.log(pdfParse);
 const BookingModel = require("../Model/BookingModel");
 
